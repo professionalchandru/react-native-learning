@@ -24,8 +24,10 @@ const App = () => {
         <Text style={tailwind('text-black text-xl m-2.5')}>Please Enter Your Name:</Text>
         <TextInput 
           multiline 
-          keyboardType='number-pad'
+          // keyboardType='number-pad'
           maxLength={20}
+          // editable={false} //like disable 
+          secureTextEntry={true}
           onChangeText={(name)=>setName(name)}
           style={tailwind('border-b border-gray-500 w-3/4 text-center')}
         />
