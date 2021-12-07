@@ -11,6 +11,7 @@ import {
   Button,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { tailwind } from 'tailwind';
@@ -38,12 +39,21 @@ const App = () => {
           style={tailwind('mb-3 border-b border-gray-500 w-3/4 text-center')}
         />
 
-        <Button 
+        {/* Button */}
+        {/* <Button 
           disabled={submmited}
           onPress={onPressHandler}
           title="Dare Me" 
           style={tailwind('my-5 w-full px-3 rounded-md')} 
-        />
+        /> */}
+
+        {/* Tochable */}
+        <TouchableOpacity 
+          onPress={onPressHandler}
+          style={tailwind('px-10 py-4 rounded-md bg-pink-300')}
+        >
+          <Text> {submmited ? 'clear' : 'submit'} </Text>
+        </TouchableOpacity>
         
         {submmited &&
           <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
