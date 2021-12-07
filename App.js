@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 import {
   Button,
+  Pressable,
   Text,
   TextInput,
   TouchableHighlight,
@@ -49,14 +50,27 @@ const App = () => {
         /> */}
 
         {/* Tochable */}
-        <TouchableHighlight 
+        {/* <TouchableHighlight 
           onPress={onPressHandler}
           style={tailwind('px-10 py-4 rounded-md bg-pink-300')}
           activeOpacity={0.2} //by default .2
           underlayColor="#3f2f1f" //used for custom opacity color
         >
           <Text> {submmited ? 'clear' : 'submit'} </Text>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
+
+        {/* Pressable */}
+        <Pressable
+          // onLongPress={onPressHandler}
+          // delayLongPress={10000}
+          onPress={onPressHandler}
+          hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}
+          android_ripple={{color: '#00f'}}
+        >
+          <Text 
+            style={tailwind('px-10 py-4 rounded-md bg-blue-400')}
+          > {submmited ? 'clear' : 'submit'} </Text>
+        </Pressable>
         
         {submmited &&
           <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
