@@ -40,7 +40,9 @@ const App = () => {
       // Toast Message
       // Toast only for android
 
-      ToastAndroid.show('Atleast 3 Characters needed', ToastAndroid.SHORT)
+      // ToastAndroid.show('Atleast 3 Characters needed', ToastAndroid.SHORT)
+      
+      ToastAndroid.showWithGravity('Atleast 3 Characters needed', ToastAndroid.SHORT, ToastAndroid.TOP)
     }
   }
 
