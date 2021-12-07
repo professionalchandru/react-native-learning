@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import {
+  Alert,
   Button,
   Pressable,
   Text,
@@ -24,7 +25,15 @@ const App = () => {
   const [submmited, setSubmitted] = useState(false)
 
   const onPressHandler = () => {
-    setSubmitted(!submmited)
+    if(name.length > 3) {
+      setSubmitted(!submmited)
+    } else {
+      Alert.alert('Warning', "Atleast 3 Characters needed", [
+        {text: 'Do not Show Again', onPress: () => console.warn('dont pressed')},
+        {text: 'Cancel', onPress: () => console.warn('Cancel pressed')},
+        {text: 'Ok', onPress: () => console.warn('Ok pressed')}
+      ], {cancelable: true})
+    }
   }
 
   return (
