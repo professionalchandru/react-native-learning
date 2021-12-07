@@ -13,6 +13,7 @@ import {
   Pressable,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableHighlight,
   TouchableOpacity,
   View,
@@ -28,11 +29,18 @@ const App = () => {
     if(name.length > 3) {
       setSubmitted(!submmited)
     } else {
-      Alert.alert('Warning', "Atleast 3 Characters needed", [
-        {text: 'Do not Show Again', onPress: () => console.warn('dont pressed')},
-        {text: 'Cancel', onPress: () => console.warn('Cancel pressed')},
-        {text: 'Ok', onPress: () => console.warn('Ok pressed')}
-      ], {cancelable: true})
+
+      // Alert Modal
+      // Alert.alert('Warning', "Atleast 3 Characters needed", [
+      //   {text: 'Do not Show Again', onPress: () => console.warn('dont pressed')},
+      //   {text: 'Cancel', onPress: () => console.warn('Cancel pressed')},
+      //   {text: 'Ok', onPress: () => console.warn('Ok pressed')}
+      // ], {cancelable: true})
+
+      // Toast Message
+      // Toast only for android
+
+      ToastAndroid.show('Atleast 3 Characters needed', ToastAndroid.SHORT)
     }
   }
 
