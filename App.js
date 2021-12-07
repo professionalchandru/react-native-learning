@@ -11,6 +11,7 @@ import {
   Button,
   Text,
   TextInput,
+  TouchableHighlight,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -48,12 +49,14 @@ const App = () => {
         /> */}
 
         {/* Tochable */}
-        <TouchableOpacity 
+        <TouchableHighlight 
           onPress={onPressHandler}
           style={tailwind('px-10 py-4 rounded-md bg-pink-300')}
+          activeOpacity={0.2} //by default .2
+          underlayColor="#3f2f1f" //used for custom opacity color
         >
           <Text> {submmited ? 'clear' : 'submit'} </Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
         
         {submmited &&
           <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
