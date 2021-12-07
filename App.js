@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import {
+  Button,
   Text,
   TextInput,
   View,
@@ -17,6 +18,11 @@ import { tailwind } from 'tailwind';
 const App = () => {
 
   const [name,setName] = useState('')
+  const [submmited, setSubmitted] = useState(false)
+
+  const onPressHandler = () => {
+    setSubmitted(!submmited)
+  }
 
   return (
     <>
@@ -27,16 +33,23 @@ const App = () => {
           // keyboardType='number-pad'
           maxLength={20}
           // editable={false} //like disable 
-          secureTextEntry={true}
+          secureTextEntry={false}
           onChangeText={(name)=>setName(name)}
-          style={tailwind('border-b border-gray-500 w-3/4 text-center')}
+          style={tailwind('mb-3 border-b border-gray-500 w-3/4 text-center')}
         />
 
-        <View style={tailwind('my-6')}>
-          <Text style={tailwind('text-blue-500 text-lg italic')}>
+        <Button 
+          disabled={submmited}
+          onPress={onPressHandler}
+          title="Dare Me" 
+          style={tailwind('my-5 w-full px-3 rounded-md')} 
+        />
+        
+        {submmited &&
+          <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
             Your Name Is: {name}
           </Text>
-        </View>
+        }
       </View>
     </>
   );
