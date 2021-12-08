@@ -10,7 +10,9 @@ import React, { useState } from 'react';
 import {
   Alert,
   Button,
+  Modal,
   Pressable,
+  StyleSheet,
   Text,
   TextInput,
   ToastAndroid,
@@ -24,31 +26,57 @@ const App = () => {
 
   const [name,setName] = useState('')
   const [submmited, setSubmitted] = useState(false)
+  const [showWarning, setShowWarning] = useState(false)
 
   const onPressHandler = () => {
     if(name.length > 3) {
       setSubmitted(!submmited)
     } else {
 
-      // Alert Modal
-      // Alert.alert('Warning', "Atleast 3 Characters needed", [
-      //   {text: 'Do not Show Again', onPress: () => console.warn('dont pressed')},
-      //   {text: 'Cancel', onPress: () => console.warn('Cancel pressed')},
-      //   {text: 'Ok', onPress: () => console.warn('Ok pressed')}
-      // ], {cancelable: true})
-
-      // Toast Message
-      // Toast only for android
-
-      // ToastAndroid.show('Atleast 3 Characters needed', ToastAndroid.SHORT)
-      
-      ToastAndroid.showWithGravity('Atleast 3 Characters needed', ToastAndroid.SHORT, ToastAndroid.TOP)
+      setShowWarning(true)
     }
   }
 
   return (
     <>
       <View style={tailwind('flex-1 bg-white items-center')}>
+
+        <Modal
+          visible={showWarning}
+          onRequestClose={()=> setShowWarning(false)}
+          transparent
+          animationType="fade"
+          hardwareAccelerated
+        >
+
+          <View style={tailwind('flex-1 items-center justify-center bg-black bg-opacity-70')}>
+            <View style={tailwind(`w-60 h-52 bg-white rounded-2xl`)}>
+              
+              <View style={tailwind('py-3 bg-yellow-300 items-center justify-center rounded-t-2xl')}>
+                <Text style={tailwind('text-lg text-black font-medium')}>
+                  Warning !
+                </Text>
+              </View>
+
+              <View style={tailwind('flex-1 items-center justify-center')}>
+                <Text style={tailwind('text-base text-black font-normal text-center')}>
+                  The name must be 3 characters long
+                </Text>
+              </View>
+
+              <Pressable 
+                style={tailwind('bg-blue-300 rounded-b-2xl')}
+                onPress={() => setShowWarning(false)}  
+                android_ripple={{color: '#0f2'}}
+              >
+                <Text style={tailwind('py-2 text-base text-black font-normal text-center')}>Ok</Text>
+              </Pressable>
+
+            </View>
+          </View>
+
+        </Modal>
+
         <Text style={tailwind('text-black text-xl m-2.5')}>Please Enter Your Name:</Text>
         <TextInput 
           multiline 
@@ -59,24 +87,6 @@ const App = () => {
           onChangeText={(name)=>setName(name)}
           style={tailwind('mb-3 border-b border-gray-500 w-3/4 text-center')}
         />
-
-        {/* Button */}
-        {/* <Button 
-          disabled={submmited}
-          onPress={onPressHandler}
-          title="Dare Me" 
-          style={tailwind('my-5 w-full px-3 rounded-md')} 
-        /> */}
-
-        {/* Tochable */}
-        {/* <TouchableHighlight 
-          onPress={onPressHandler}
-          style={tailwind('px-10 py-4 rounded-md bg-pink-300')}
-          activeOpacity={0.2} //by default .2
-          underlayColor="#3f2f1f" //used for custom opacity color
-        >
-          <Text> {submmited ? 'clear' : 'submit'} </Text>
-        </TouchableHighlight> */}
 
         {/* Pressable */}
         <Pressable
@@ -100,5 +110,11 @@ const App = () => {
     </>
   );
   }
+
+  const style = StyleSheet.create({
+    test: {
+      backgroundColor: '#F2c'
+    }
+  })
 
 export default App;
