@@ -9,7 +9,6 @@
 import React, { useState } from 'react';
 import {
   Alert,
-  Button,
   Image,
   ImageBackground,
   Modal,
@@ -17,11 +16,9 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  ToastAndroid,
-  TouchableHighlight,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import Button from './src/components/Button';
 import { tailwind } from 'tailwind';
 
 const App = () => {
@@ -91,17 +88,7 @@ const App = () => {
         />
 
         {/* Pressable */}
-        <Pressable
-          // onLongPress={onPressHandler}
-          // delayLongPress={10000}
-          onPress={onPressHandler}
-          hitSlop={{top: 10, right: 10, bottom: 10, left: 10}}
-          android_ripple={{color: '#00f'}}
-        >
-          <Text 
-            style={tailwind('px-10 py-4 rounded-md bg-blue-400')}
-          > {submmited ? 'clear' : 'submit'} </Text>
-        </Pressable>
+        <Button submmited={submmited} onPressHandler={onPressHandler} />
         
         {submmited ?
           <View>
