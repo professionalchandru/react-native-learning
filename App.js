@@ -11,6 +11,7 @@ import {
   Alert,
   Button,
   Image,
+  ImageBackground,
   Modal,
   Pressable,
   StyleSheet,
@@ -40,7 +41,7 @@ const App = () => {
 
   return (
     <>
-      <View style={tailwind('flex-1 bg-white items-center')}>
+      <ImageBackground blurRadius={5} source={{uri: 'https://images.pexels.com/photos/1591447/pexels-photo-1591447.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}} style={tailwind('flex-1 bg-white items-center')}>
 
         <Modal
           visible={showWarning}
@@ -117,10 +118,10 @@ const App = () => {
           <Image 
             style={style.image}
             resizeMode='stretch'
-            source={require('./assets/error.png')} 
+            source={{uri: 'https://thumbs.dreamstime.com/b/oops-words-reflective-white-background-concept-error-screens-49260938.jpg'}} 
           />
         }
-      </View>
+      </ImageBackground>
     </>
   );
   }
