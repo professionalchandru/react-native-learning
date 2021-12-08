@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import {
   Alert,
   Button,
+  Image,
   Modal,
   Pressable,
   StyleSheet,
@@ -101,10 +102,23 @@ const App = () => {
           > {submmited ? 'clear' : 'submit'} </Text>
         </Pressable>
         
-        {submmited &&
-          <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
-            Your Name Is: {name}
-          </Text>
+        {submmited ?
+          <View>
+            <Text style={tailwind('mt-3 text-blue-500 text-lg italic')}>
+              Your Name Is: {name}
+            </Text>
+            <Image 
+              style={style.image}
+              resizeMode='stretch'
+              source={require('./assets/done.png')} 
+            />
+          </View>
+          :
+          <Image 
+            style={style.image}
+            resizeMode='stretch'
+            source={require('./assets/error.png')} 
+          />
         }
       </View>
     </>
@@ -114,6 +128,11 @@ const App = () => {
   const style = StyleSheet.create({
     test: {
       backgroundColor: '#F2c'
+    },
+    image: {
+      width: 100,
+      height: 100,
+      margin: 10
     }
   })
 
